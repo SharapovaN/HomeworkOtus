@@ -3,53 +3,49 @@ package ru.Otus;
 import java.util.*;
 import java.util.function.UnaryOperator;
 
-public class DIYArrayList<E>implements List<E> {
-    private int size=0;
-    private int capacity=10;
-    private Object[] array=new Object[capacity];
-    private int index=0;
+public class DIYArrayList<E> implements List<E> {
+    private int size = 0;
+    private int capacity = 10;
+    private Object[] array = new Object[capacity];
+    private int index = 0;
+    private int cursor = 0;
 
-    public void printArray(String c){
-        System.out.print(c+"[");
-        for(int i=0;i<size-1;i++){
-            System.out.print(array[i]+", ");
+    public void printArray(String c) {
+        System.out.print(c + "[");
+        for (int i = 0; i < size - 1; i++) {
+            System.out.print(array[i] + ", ");
         }
-        System.out.println(array[size-1]+"]");
+        System.out.println(array[size - 1] + "]");
         System.out.println();
     }
 
     @Override
     public boolean add(E e) {
-        if(index==array.length-1){
+
+        if (index == array.length - 1) {
             growArray();
         }
-        array[index]=e;
+        array[index] = e;
         index++;
         size++;
         return true;
     }
 
-    private void growArray(){
-        E[] newArray = (E[])new Object[array.length * 2];
-        System.arraycopy(array, 0, newArray, 0, index );
+    private void growArray() {
+        E[] newArray = (E[]) new Object[array.length * 2];
+        System.arraycopy(array, 0, newArray, 0, size);
         array = newArray;
     }
 
-    public boolean addAll(DIYArrayList c, E...elements){
-        boolean result=false;
-        for(E element:elements)
-            result|=c.add(element);
+    public boolean addAll(DIYArrayList c, E... elements) {
+        boolean result = false;
+        for (E element : elements)
+            result |= c.add(element);
         return result;
     }
 
-    public void copy(DIYArrayList c,DIYArrayList e){
-        Object[] a=c.toArray();
-        for(int i=0;i<a.length;i++){
-            e.add(a[i]);
-        }
-    }
-
-    public void sort(Comparator<? super E> c) {
+    public void sort(Comparator<? super E> c)
+    {
         Arrays.sort((E[]) array, 0, size, c);
     }
 
@@ -167,7 +163,66 @@ public class DIYArrayList<E>implements List<E> {
 
     @Override
     public ListIterator<E> listIterator() {
-        throw new UnsupportedOperationException();
+
+        ListIterator<E> iterator = new ListIterator<E>() {
+
+            @Override
+            public boolean hasNext() {
+                if (cursor < size) return true;
+                cursor = 0;
+                return false;
+            }
+
+            @Override
+            public E next() {
+                if (cursor >= size) {
+                    cursor = 0;
+                    throw new NoSuchElementException("next");
+                }
+                cursor++;
+                return (E) array[cursor - 1];
+
+            }
+
+            @Override
+            public boolean hasPrevious() {
+                throw new UnsupportedOperationException("hasPrevious");
+
+            }
+
+            @Override
+            public E previous() {
+                throw new UnsupportedOperationException("previous");
+            }
+
+            @Override
+            public int nextIndex() {
+                throw new UnsupportedOperationException("nextIndex");
+            }
+
+            @Override
+            public int previousIndex() {
+                throw new UnsupportedOperationException("prevIndex");
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public void set(E e) {
+                if (cursor <= size) {
+                    array[cursor-1] = e;
+                }
+            }
+
+            @Override
+            public void add(E e) {
+                throw new UnsupportedOperationException();
+            }
+        };
+        return iterator;
     }
 
     @Override
@@ -180,4 +235,3 @@ public class DIYArrayList<E>implements List<E> {
         throw new UnsupportedOperationException();
     }
 }
-
