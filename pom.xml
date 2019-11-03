@@ -5,12 +5,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.otus</groupId>
-    <artifactId>test2</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>Otus_Homeworks</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${com.google.guava.version}</version>
+        </dependency>
+    </dependencies>
 
     <modules>
         <module>HW1-maven</module>
+        <module>HW2-collections</module>
     </modules>
 
     <developers>
