@@ -1,4 +1,4 @@
-﻿package ru.otus.collections;
+package ru.otus.collections;
 
 import java.util.Collections;
 
