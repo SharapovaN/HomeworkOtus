@@ -4,11 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+
     <groupId>ru.otus</groupId>
     <artifactId>Otus_Homeworks</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
+  
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -20,6 +21,7 @@
     <modules>
         <module>HW1-maven</module>
         <module>HW2-collections</module>
+        <module>HW3-GarbageCollection</module>
     </modules>
 
     <developers>
@@ -32,8 +34,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
-        <com.google.guava.version>27.1-jre</com.google.guava.version>
+        <com.google.guava.version>28.1-jre</com.google.guava.version>
         <my.variable>42</my.variable>
+
+
     </properties>
 
     <build>
@@ -48,4 +52,3 @@
         </pluginManagement>
     </build>
 
-</project>
