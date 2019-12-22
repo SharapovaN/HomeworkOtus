@@ -4,14 +4,13 @@ package ru.otus.atm;
 
 import java.util.*;
 
-public class ATM {
+public class ATM implements ATMInterface {
     private Map<FaceValue, Cell> atm = new TreeMap<FaceValue, Cell>();
     private int summ = 0;
 
     public void addCell(FaceValue faceValue, Cell cell) {
         atm.put(faceValue, cell);
     }
-
     public Map<FaceValue, Cell> getAtm() {
         return atm;
     }
@@ -70,3 +69,4 @@ public class ATM {
         return "В банкомате недостаточно средств";
     }
 }
+
