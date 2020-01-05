@@ -22,6 +22,7 @@
         <module>HW1-maven</module>
         <module>HW2-collections</module>
         <module>HW3-GarbageCollection</module>
+        <module>HW6-ATM</module>
     </modules>
 
     <developers>
