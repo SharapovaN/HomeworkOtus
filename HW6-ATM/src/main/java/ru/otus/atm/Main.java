@@ -2,29 +2,29 @@ package ru.otus.atm;
 
 public class Main {
     public static void main(String[] args) {
-    ATM atm=new ATM();
-    Cell hundredCell=new Cell(FaceValue.HUNDRED);
-    Cell fiveThousandCell=new Cell(FaceValue.FIVETHOUSAND);
-    Cell thousandCell=new Cell(FaceValue.THOUSAND);
-    Cell fiveHundredCell=new Cell(FaceValue.FIVEHUNDRED);
+    ATMImpl atmImpl =new ATMImpl();
+    CellImpl hundredCell=new CellImpl(FaceValue.HUNDRED);
+    CellImpl fiveThousandCell=new CellImpl(FaceValue.FIVETHOUSAND);
+    CellImpl thousandCell=new CellImpl(FaceValue.THOUSAND);
+    CellImpl fiveHundredCell=new CellImpl(FaceValue.FIVEHUNDRED);
 
-    atm.addCell(hundredCell.getFaceValue(),hundredCell);
-    atm.addCell(fiveHundredCell.getFaceValue(),fiveHundredCell);
-    atm.addCell(thousandCell.getFaceValue(), thousandCell);
-    atm.addCell(fiveThousandCell.getFaceValue(),fiveThousandCell);
+    atmImpl.addCell(hundredCell.getFaceValue(),hundredCell);
+    atmImpl.addCell(fiveHundredCell.getFaceValue(),fiveHundredCell);
+    atmImpl.addCell(thousandCell.getFaceValue(), thousandCell);
+    atmImpl.addCell(fiveThousandCell.getFaceValue(),fiveThousandCell);
 
-    BankNote[] bankNotes=new BankNote[]{new BankNote(FaceValue.HUNDRED),new BankNote(FaceValue.FIVEHUNDRED),new BankNote(FaceValue.THOUSAND),new BankNote(FaceValue.FIVETHOUSAND)};
+    BankNoteImpl[] bankNotes=new BankNoteImpl[]{new BankNoteImpl(FaceValue.HUNDRED),new BankNoteImpl(FaceValue.FIVEHUNDRED),new BankNoteImpl(FaceValue.THOUSAND),new BankNoteImpl(FaceValue.FIVETHOUSAND)};
 
-    atm.addBanknotes(bankNotes);
+    atmImpl.addBanknotes(bankNotes);
 
         System.out.println("Количество банкнот номинала '100' - "+ hundredCell.getCount());
         System.out.println("Количество банкнот номинала '500' - "+fiveHundredCell.getCount());
         System.out.println("Количество банкнот номинала '1000' - "+thousandCell.getCount());
         System.out.println("Количество банкнот номинала '5000' - "+fiveThousandCell.getCount());
 
-        System.out.println("Сумма денег в банкомате на данный момент - "+atm.summ());
+        System.out.println("Сумма денег в банкомате на данный момент - "+ atmImpl.summ());
 
-        System.out.println("Результат операции 'снятие денег' -"+atm.withdrowBankNotes(1600));
+        System.out.println("Результат операции 'снятие денег' -"+ atmImpl.withdrowBankNotes(1600));
 
         System.out.println("Количество банкнот номинала '100' - "+ hundredCell.getCount());
         System.out.println("Количество банкнот номинала '500' - "+fiveHundredCell.getCount());

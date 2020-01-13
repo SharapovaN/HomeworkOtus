@@ -1,37 +1,12 @@
 package ru.otus.atm;
 
-import java.util.ArrayList;
+public interface Cell {
 
-public class Cell implements CellInterface {
-    private final FaceValue faceValue;
-    private ArrayList<BankNote> bankNotes = new ArrayList<BankNote>();
-    private int count = 0;
+    FaceValue getFaceValue();
 
-    public Cell(FaceValue faceValue) {
-        this.faceValue = faceValue;
-    }
+    void add(BankNoteImpl bankNote);
 
-    public FaceValue getFaceValue() {
-        return faceValue;
-    }
+    BankNoteImpl withdraw();
 
-    public void add(BankNote bankNote) {
-        if (faceValue.equals(bankNote.getFaceValue()))
-            bankNotes.add(bankNote);
-            count = bankNotes.size();
-    }
-
-   public BankNote withdraw() {
-        BankNote returnBankNote = null;
-            if (count > 0) {
-                returnBankNote = bankNotes.remove(bankNotes.size() - 1);
-                count -= 1;
-
-        }
-        return returnBankNote;
-    }
-
-    public int getCount() {
-        return count;
-    }
+    int getCount();
 }

@@ -1,13 +1,7 @@
 package ru.otus.atm;
 
-public class BankNote implements BanknoteInterface {
-    private final FaceValue faceValue;
+public interface Banknote {
 
-    public BankNote(FaceValue faceValue){
-        this.faceValue=faceValue;
-    }
+    FaceValue getFaceValue();
 
-    public FaceValue getFaceValue() {
-        return faceValue;
-    }
 }
