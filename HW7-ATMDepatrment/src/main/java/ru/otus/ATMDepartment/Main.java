@@ -21,6 +21,7 @@ public class Main {
 
         Executor executor = new Executor();
         executor.addCommand(new AskSumm(abc.getArray()));
+        executor.addCommand(new AskSize(abc.getArray()));
         abc.getArray().get(0).addBanknotes(banknotesForAdding);
 
         executor.addCommand(new AskSumm(abc.getArray()));
